@@ -4,8 +4,8 @@
  * @returns true si el RUT es válido, false en caso contrario.
  */
 export function validarRUT(rut: string): boolean {
-    // Eliminar puntos y guiones del RUT
-    const rutLimpio = rut.replace(/\./g, '').replace(/-/g, '');
+    // Eliminar puntos y guion del RUT
+    const rutLimpio = rut.replace(/[.-]/g, '');
 
     // Verificar que tenga al menos 2 caracteres (número y dígito verificador)
     if (rutLimpio.length < 2) return false;
@@ -28,7 +28,15 @@ export function validarRUT(rut: string): boolean {
     }
 
     const resto = suma % 11;
-    const digitoCalculado = 11 - resto === 10 ? 'K' : 11 - resto === 11 ? '0' : String(11 - resto);
+    let digitoCalculado: string;
+
+    if (resto === 1) {
+        digitoCalculado = 'K';
+    } else if (resto === 0) {
+        digitoCalculado = '0';
+    } else {
+        digitoCalculado = String(11 - resto);
+    }
 
     // Comparar el dígito verificador calculado con el ingresado
     return digitoCalculado === digitoVerificador;
