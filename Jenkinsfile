@@ -12,13 +12,11 @@ pipeline {
             stages {
                 stage('Instalacion dependencias') {
                     steps {
-                        sleep(time: 10, unit: 'SECONDS')
                         sh 'npm install'
                     }
                 }
                 stage('build - Pruebas unitarias') {
                     steps {
-                        sleep(time: 10, unit: 'SECONDS')
                         sh 'npm run test'
                     }
                 }
