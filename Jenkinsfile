@@ -1,21 +1,31 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_IMAGE = 'nexus-repo/backend-test-trabajo'
-        KUBE_CONFIG_PATH = 'kube-config.yaml'
-    }
-
     stages {
-        stage('Instalar Dependencias') {
-            steps {
-                sh 'npm install'
+        stage('Build - instalacion dependencias') {
+            agent {
+                docker {
+                    image 'node:22-alpine'
+                    reuseNode true
+                }
             }
-        }
-
-        stage('Tests Unitarios') {
-            steps {
-                sh 'npm run test:ci'
+            stages {
+                stage('Instalacion dependencias') {
+                    steps {
+                        sh 'npm install'
+                    }
+                }
+                stage('build - Pruebas unitarias') {
+                    steps {
+                        sh 'npm run test'
+                    }
+                }
+                stage('build - build de la aplicacion') {
+                    steps {
+                        sh 'npm run build'
+                        sleep(time: 10, unit: 'SECONDS')
+                    }
+                }
             }
         }
 
