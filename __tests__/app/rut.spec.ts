@@ -1,4 +1,4 @@
-import { describe, test } from 'node:test';
+import { describe, test } from "@jest/globals";
 import { validarRUT } from '../../src/app/rut';
 
 describe('validarRUT', () => {
