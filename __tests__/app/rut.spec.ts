@@ -1,3 +1,4 @@
+import { describe, test } from 'node:test';
 import { validarRUT } from '../../src/app/rut';
 
 describe('validarRUT', () => {
