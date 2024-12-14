@@ -7,12 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('Clonar Repo') {
-            steps {
-                git 'https://github.com/RexThandar/backend-test-trabajo.git'
-            }
-        }
-
         stage('Instalar Dependencias') {
             steps {
                 sh 'npm install'
