@@ -9,7 +9,7 @@ describe('validarRUT', () => {
         expect(validarRUT('12.345.678-1')).toBe(false);
         expect(validarRUT('1')).toBe(false);
         expect(validarRUT('12.34A.678-9')).toBe(false);
-        expect(validarRUT('12345678-5')).toBe(false);
+        expect(validarRUT('12345678-5')).toBe(true);
         // expect(validarRUT('')).toBe(false);
         // expect(validarRUT('1.234.567-0')).toBe(false);
     });
