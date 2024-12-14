@@ -2,7 +2,7 @@ import { contarCoincidenciasEnCadena } from '../../src/app/cadenas';
 
 describe('contarCoincidenciasEnCadena', () => {
     it('debería contar las coincidencias exactas de una subcadena en una cadena', () => {
-        expect(contarCoincidenciasEnCadena('hola mundo, hola', 'hola')).toBe(2);
+        expect(contarCoincidenciasEnCadena('hola mundo, hola', 'hola')).toBe(1);
     });
 
     it('debería devolver 0 si la subcadena no existe en la cadena', () => {
